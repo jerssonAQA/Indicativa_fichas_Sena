@@ -1,6 +1,6 @@
 streamlit
 streamlit-option-menu
-openai
+openai==0.28.0
 json5==0.9.28
 jsonpointer==3.0.0
 jsonschema==4.23.0
