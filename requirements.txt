@@ -1,5 +1,5 @@
-streamlit==1.39.0
-streamlit-option-menu==0.4.0
+streamlit
+streamlit-option-menu
 openai
 json5==0.9.28
 jsonpointer==3.0.0
