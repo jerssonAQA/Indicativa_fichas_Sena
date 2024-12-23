@@ -7,7 +7,7 @@ from tiktoken import encoding_for_model
 # Configurar la API de OpenAI (usando secretos de Streamlit)
 api_key = st.secrets.get("OPENAI_API_KEY")
 if api_key:
-    client = openai(api_key=api_key)
+    openai.api_key = api_key
 else:
     st.error("No se encontró la clave OPENAI_API_KEY en st.secrets")
  
