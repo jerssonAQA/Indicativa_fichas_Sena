@@ -221,11 +221,12 @@ if selected_file:
             if data['FECHA_INICIO'].isnull().all() or data['FECHA_FIN'].isnull().all():
                 st.error("Las columnas de fecha contienen valores no válidos o están vacías. Verifique los datos.")
             else:
-                fecha_inicio = st.selectbox("Selecciona la fecha de inicio:",data['FECHA_INICIO'].unique(), index=0)
-                fecha_fin = st.selectbox("Selecciona la fecha de fin:", data['FECHA_FIN'].unique(),index=len(data['FECHA_FIN'].unique())-1)
-                # fecha_inicio = st.date_input("Selecciona la fecha de inicio:", data['FECHA_INICIO'].min().date())
-                # fecha_fin = st.date_input("Selecciona la fecha de fin:", data['FECHA_FIN'].max().date())
-
+                fecha_inicio = st.selectbox("Selecciona la fecha de inicio:",sorted(data['FECHA_INICIO'].unique()), index=0)
+                # Ordenar las fechas de 'FECHA_FIN' de menor a mayor
+                fechas_fin = sorted(data['FECHA_FIN'].unique())
+                # Seleccionar el último valor como predeterminado
+                fecha_fin = st.selectbox("Selecciona la fecha de fin:",fechas_fin,index=len(fechas_fin)-1)
+                
                 data = data[(data['FECHA_INICIO'] >= pd.to_numeric(fecha_inicio)) & (data['FECHA_FIN'] <= pd.to_numeric(fecha_fin))]
 
         if 'TIPO_PROGRAMA' in data.columns:
